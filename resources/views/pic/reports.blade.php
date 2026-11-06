@@ -83,7 +83,7 @@
     @forelse ($bookings as $b)
         <tr>
             <td>{{ $b->booking_no }}</td><td>{{ $b->event_name }}</td><td>{{ $b->eventType->name() }}</td><td>{{ $b->user->name }}</td>
-            <td>{{ $b->facility->name() }}</td><td>{{ $b->event_date->format('d M Y') }}</td><td>{{ $b->expected_guests }}</td>
+            <td>{{ $b->facility->name() }}</td><td>{{ $b->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }}</td><td>{{ $b->expected_guests }}</td>
             <td><span class="pill pill-{{ $b->status }}">{{ __($b->status) }}</span></td>
             <td>@if ($b->deposit)RM{{ number_format($b->deposit->amount,2) }} ({{ __(str_replace('_',' ',$b->deposit->status)) }})@endif</td>
         </tr>

@@ -68,9 +68,9 @@
         <div class="card" id="a{{ $a->id }}">
             <h2>{{ $a->localTitle() }} @if ($isNew)<span class="badge">{{ __('new') }}</span>@endif</h2>
             <p class="hint" style="margin-top:-8px;">
-                <x-icon name="calendar" /> {{ $a->created_at->format('d M Y, H:i') }}
+                <x-icon name="calendar" /> {{ $a->created_at->locale(app()->getLocale())->translatedFormat('d M Y, H:i') }}
                 @if ($a->author) &middot; {{ $a->author->name }}@endif
-                @if ($a->event_date) &middot; <strong>{{ __('Event date') }}: {{ $a->event_date->format('d M Y') }}</strong>@endif
+                @if ($a->event_date) &middot; <strong>{{ __('Event date') }}: {{ $a->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }}</strong>@endif
             </p>
             <p style="white-space:pre-line;margin-bottom:0;">{{ $a->localBody() }}</p>
 

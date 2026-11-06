@@ -12,7 +12,7 @@
     <input type="hidden" name="event_date" value="{{ $selectedDate }}">
 
     <div class="alert-box alert-success" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-        <span><strong>{{ __('Selected date:') }}</strong> {{ \Carbon\Carbon::parse($selectedDate)->format('l, d F Y') }}</span>
+        <span><strong>{{ __('Selected date:') }}</strong> {{ \Carbon\Carbon::parse($selectedDate)->locale(app()->getLocale())->translatedFormat('l, d F Y') }}</span>
         <a href="{{ route('home') }}#calendar-section">{{ __('Change date') }}</a>
     </div>
 
@@ -80,7 +80,7 @@
                     <div>
                         <span>{{ $item->name() }} <span class="hint">({{ __('max') }} {{ $item->total_quantity }})</span></span>
                         <input type="number" name="equipment[{{ $item->id }}]" min="0" max="{{ $item->total_quantity }}"
-                               value="{{ old('equipment.' . $item->id, 0) }}" aria-label="{{ $item->name() }} quantity">
+                               value="{{ old('equipment.' . $item->id, 0) }}" aria-label="{{ $item->name() }} {{ __('Quantity') }}">
                     </div>
                 @endforeach
             </div>

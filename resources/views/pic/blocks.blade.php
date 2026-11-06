@@ -27,7 +27,7 @@
     <tbody>
     @forelse ($blocks as $b)
         <tr>
-            <td>{{ $b->block_date->format('d M Y') }}</td>
+            <td>{{ $b->block_date->locale(app()->getLocale())->translatedFormat('d M Y') }}</td>
             <td>{{ substr($b->start_time,0,5) }} - {{ substr($b->end_time,0,5) }}</td>
             <td>{{ $b->title }}<br><span class="hint">{{ $b->reason }}</span></td>
             <td>{{ __(str_replace('_', ' ', $b->type)) }}</td>

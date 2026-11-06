@@ -29,7 +29,7 @@
             <td>{{ $u->role === 'pic' ? __('Secretary / PIC') : __('Public Booker') }}</td>
             <td>{{ $u->role === 'public' ? ($u->booker_type === 'non_muslim' ? __('Non-Muslim') : __('Muslim')) : '-' }}</td>
             <td>{{ $u->bookings_count }}</td>
-            <td>{{ $u->created_at?->format('d M Y') }}</td>
+            <td>{{ $u->created_at?->locale(app()->getLocale())->translatedFormat('d M Y') }}</td>
             @if ($isChairman)
                 <td>@if ($u->role === 'pic')
                     <form method="POST" action="{{ route('chairman.pics.destroy', $u) }}" onsubmit="return confirm('{{ __('Remove this PIC account?') }}')">@csrf @method('DELETE')

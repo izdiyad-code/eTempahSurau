@@ -79,7 +79,7 @@
         @foreach ($announcements as $a)
             <a class="card" href="{{ route('announcements.index') }}#a{{ $a->id }}" style="text-decoration:none;color:inherit;margin:0;">
                 <strong style="color:#14532d;">{{ $a->localTitle() }}</strong>
-                <div class="hint">{{ $a->created_at->format('d M Y') }}@if ($a->event_date) &middot; {{ __('Event date') }}: {{ $a->event_date->format('d M Y') }}@endif</div>
+                <div class="hint">{{ $a->created_at->locale(app()->getLocale())->translatedFormat('d M Y') }}@if ($a->event_date) &middot; {{ __('Event date') }}: {{ $a->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }}@endif</div>
                 <div>{{ \Illuminate\Support\Str::limit($a->localBody(), 110) }}</div>
             </a>
         @endforeach
@@ -192,6 +192,12 @@
             initialView: 'dayGridMonth',
             height: 'auto',
             locale: @json(app()->getLocale()),
+            buttonText: { today: @json(__('Today')) },
+            buttonHints: {
+                prev: @json(__('Previous month')),
+                next: @json(__('Next month')),
+                today: @json(__('This month'))
+            },
             firstDay: 1,
             headerToolbar: { left: 'prev,next', center: 'title', right: 'today' },
             selectable: false,

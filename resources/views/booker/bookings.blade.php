@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ $b->booking_no }}</td>
                 <td>{{ $b->event_name }}<br><span class="hint">{{ $b->eventType->name() }}</span></td>
-                <td>{{ $b->event_date->format('d M Y') }}<br>{{ substr($b->start_time,0,5) }} - {{ substr($b->end_time,0,5) }}</td>
+                <td>{{ $b->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }}<br>{{ substr($b->start_time,0,5) }} - {{ substr($b->end_time,0,5) }}</td>
                 <td>{{ $b->facility->name() }}</td>
                 <td><span class="pill pill-{{ $b->status }}">{{ __(ucfirst($b->status)) }}</span></td>
                 <td>

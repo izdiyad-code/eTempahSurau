@@ -25,7 +25,7 @@
         @forelse ($pendingList as $b)
             <tr>
                 <td>{{ $b->booking_no }}</td><td>{{ $b->event_name }}</td><td>{{ $b->user->name }}</td>
-                <td>{{ $b->event_date->format('d M Y') }}</td><td>{{ $b->facility->name() }}</td>
+                <td>{{ $b->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }}</td><td>{{ $b->facility->name() }}</td>
                 <td><a class="btn btn-sm" href="{{ route('staff.bookings.show', $b) }}">{{ __('View') }}</a></td>
             </tr>
         @empty
@@ -42,7 +42,7 @@
         <tbody>
         @forelse ($upcoming as $b)
             <tr>
-                <td>{{ $b->event_date->format('d M Y') }}</td>
+                <td>{{ $b->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }}</td>
                 <td>{{ substr($b->start_time,0,5) }} - {{ substr($b->end_time,0,5) }}</td>
                 <td><a href="{{ route('staff.bookings.show', $b) }}">{{ $b->event_name }}</a></td>
                 <td>{{ $b->facility->name() }}</td><td>{{ $b->user->name }}</td>

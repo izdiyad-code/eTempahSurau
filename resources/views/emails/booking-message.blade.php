@@ -8,7 +8,7 @@
         <table cellpadding="6" style="border-collapse:collapse;">
             <tr><td><strong>{{ __('Reference') }}</strong></td><td>{{ $booking->booking_no }}</td></tr>
             <tr><td><strong>{{ __('Event') }}</strong></td><td>{{ $booking->event_name }}</td></tr>
-            <tr><td><strong>{{ __('Date') }}</strong></td><td>{{ $booking->event_date->format('d F Y') }}</td></tr>
+            <tr><td><strong>{{ __('Date') }}</strong></td><td>{{ $booking->event_date->locale(app()->getLocale())->translatedFormat('d F Y') }}</td></tr>
             <tr><td><strong>{{ __('Time') }}</strong></td><td>{{ substr($booking->start_time, 0, 5) }} - {{ substr($booking->end_time, 0, 5) }}</td></tr>
         </table>
     @endif

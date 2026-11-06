@@ -52,6 +52,20 @@ class BookingNotifier
 
     private static function sendMail(string $to, string $title, string $message, ?Booking $booking, string $locale = 'en'): void
     {
+        $external = !in_array(config('mail.default'), ['array', 'log'], true);
+        $allowed = array_map('strtolower', config('mail.allowed_recipients', []));
+        if ($external && $allowed !== [] && !in_array(strtolower(trim($to)), $allowed, true)) {
+            Log::notice('Skipped external email outside the configured demo recipient list.');
+            return;
+        }
+
+        // Seeded .test accounts still receive in-app notifications, but have no
+        // real mailbox. Do not send them through an external mail transport.
+        if ($external && str_ends_with(strtolower(trim($to)), '.test')) {
+            Log::notice('Skipped external email for a reserved .test recipient.');
+            return;
+        }
+
         try {
             Mail::to($to)->locale($locale)->send(new BookingMessageMail($title, $message, $booking));
         } catch (Throwable $e) {

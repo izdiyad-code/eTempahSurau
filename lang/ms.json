@@ -429,5 +429,19 @@
  "Description (English)": "Penerangan (Inggeris)",
  "Description (Bahasa Melayu)": "Penerangan (Bahasa Melayu)",
  "Deposits cannot be verified for cancelled or rejected bookings.": "Deposit tidak boleh disahkan bagi tempahan yang dibatalkan atau ditolak.",
- "The requested date has passed. Please submit a new reschedule request.": "Tarikh yang dimohon telah berlalu. Sila hantar permohonan tukar tarikh yang baharu."
+ "The requested date has passed. Please submit a new reschedule request.": "Tarikh yang dimohon telah berlalu. Sila hantar permohonan tukar tarikh yang baharu.",
+ "Today": "Hari ini",
+ "Previous month": "Bulan sebelumnya",
+ "Next month": "Bulan seterusnya",
+ "This month": "Bulan ini",
+ "Quantity": "kuantiti",
+ "Public": "Penempah Awam",
+ "Pic": "Setiausaha / PIC",
+ "Booking Report": "Laporan Tempahan",
+ "Generated:": "Dijana:",
+ "Total records:": "Jumlah rekod:",
+ "Total bookings": "Jumlah tempahan",
+ "Upcoming approved": "Tempahan diluluskan akan datang",
+ "Verified / settled deposit": "Deposit disahkan / diselesaikan",
+ "Forfeited deposit": "Deposit dilucutkan"
 }

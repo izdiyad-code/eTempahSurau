@@ -16,6 +16,11 @@ return [
 
     'default' => env('MAIL_MAILER', 'log'),
 
+    // Optional local-demo restriction. Blank keeps normal production routing.
+    'allowed_recipients' => array_values(array_filter(array_map(
+        'trim', explode(',', env('MAIL_ALLOWED_RECIPIENTS', ''))
+    ))),
+
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations

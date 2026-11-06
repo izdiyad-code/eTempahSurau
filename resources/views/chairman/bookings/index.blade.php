@@ -12,7 +12,7 @@
     <dl class="detail">
         <dt>{{ __('Reference') }}</dt><dd>{{ $b->booking_no }}</dd>
         <dt>{{ __('Booker') }}</dt><dd>{{ $b->user->name }} &middot; {{ $b->user->phone }}</dd>
-        <dt>{{ __('When') }}</dt><dd>{{ $b->event_date->format('l, d F Y') }}, {{ substr($b->start_time,0,5) }} - {{ substr($b->end_time,0,5) }}</dd>
+        <dt>{{ __('When') }}</dt><dd>{{ $b->event_date->locale(app()->getLocale())->translatedFormat('l, d F Y') }}, {{ substr($b->start_time,0,5) }} - {{ substr($b->end_time,0,5) }}</dd>
         <dt>{{ __('Where') }}</dt><dd>{{ $b->facility->name() }} &middot; {{ $b->expected_guests }} {{ __('guests') }} &middot; {{ $b->eventType->name() }}</dd>
         @if ($b->notes)<dt>{{ __('Notes') }}</dt><dd>{{ $b->notes }}</dd>@endif
         @if ($b->rejection_reason)<dt>{{ __('Rejection reason') }}</dt><dd>{{ $b->rejection_reason }}</dd>@endif

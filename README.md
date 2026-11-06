@@ -29,7 +29,7 @@ No real database, receipts, logs or .env credentials are included. Do not deploy
 
 Run `php artisan test` or `php vendor/phpunit/phpunit/phpunit` with the included phpunit.xml configuration. Tests require SQLite :memory:; the test base refuses persistent databases before preparing the schema. Do not use destructive refresh commands against a real database.
 
-Latest recorded local regression result on 6 November 2026: 58 tests, 337 assertions, zero failures/errors. The live browser test separately confirmed a dummy booking through approval, deposit verification and matching CSV.
+Latest recorded local regression result on 6 November 2026: 65 tests, 542 assertions, zero failures/errors. The live browser test separately confirmed a dummy booking through approval, deposit verification and matching CSV.
 
 ## Corrected defects
 
@@ -37,8 +37,12 @@ Latest recorded local regression result on 6 November 2026: 58 tests, 337 assert
 - Refuse approval of elapsed reschedule dates.
 - Match login success-message language to the saved/session locale.
 
-This is an academic project. External SMTP delivery, representative UAT and a complete mobile-browser matrix require separate acceptance evidence.
+This is an academic project. A real booking email was confirmed in the controlled Chairman inbox on 6 November 2026. Main pages were checked in EN/BM at desktop and 390 px widths, with browser navigation timings recorded. Representative UAT remains pending; no participant results are claimed.
 
 Public source privacy: photographs containing identifiable people are replaced by facility placeholders in this distribution. Local project originals are unchanged.
 
 All raster image assets are omitted from the public distribution and replaced by generated SVG placeholders. Existing local database image paths may require updating; this package is intended for a fresh database setup.
+
+Local demo mail protection: .test recipients are skipped by external notification mail. Set MAIL_ALLOWED_RECIPIENTS privately to restrict demo notifications to inboxes you control; in-app notifications remain available.
+
+Additional fixes: localized calendar/date/role labels and preserved language on logout. The full suite contains 65 tests with 542 assertions.

@@ -8,10 +8,10 @@
 @forelse ($requests as $r)
 <div class="card">
     <h2>{{ __(ucfirst($r->type)) }} &mdash; {{ $r->booking->booking_no }} <span class="pill pill-{{ $r->status }}">{{ __($r->status) }}</span></h2>
-    <p>{{ $r->booking->event_name }} &middot; {{ $r->user->name }} &middot; {{ __('now') }} {{ $r->booking->event_date->format('d M Y') }}
+    <p>{{ $r->booking->event_name }} &middot; {{ $r->user->name }} &middot; {{ __('now') }} {{ $r->booking->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }}
        {{ substr($r->booking->start_time,0,5) }}-{{ substr($r->booking->end_time,0,5) }}</p>
     @if ($r->type === 'reschedule')
-        <p><strong>{{ __('Requested:') }}</strong> {{ $r->new_date->format('d M Y') }}, {{ substr($r->new_start_time,0,5) }} - {{ substr($r->new_end_time,0,5) }}</p>
+        <p><strong>{{ __('Requested:') }}</strong> {{ $r->new_date->locale(app()->getLocale())->translatedFormat('d M Y') }}, {{ substr($r->new_start_time,0,5) }} - {{ substr($r->new_end_time,0,5) }}</p>
     @endif
     <p><strong>{{ __('Reason:') }}</strong> {{ $r->reason }}</p>
 

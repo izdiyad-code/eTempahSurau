@@ -20,7 +20,7 @@
     <h2>{{ $d->booking->booking_no }} &mdash; {{ __('RM') }}{{ number_format($d->amount, 2) }}
         <span class="pill pill-{{ $d->status }}">{{ __(str_replace('_', ' ', $d->status)) }}</span></h2>
     <p>{{ $d->booking->event_name }} &middot; {{ $d->booking->user->name }} ({{ $d->booking->user->phone }}) &middot;
-       {{ $d->booking->event_date->format('d M Y') }} &middot; {{ __('booking') }} <span class="pill pill-{{ $d->booking->status }}">{{ __($d->booking->status) }}</span></p>
+       {{ $d->booking->event_date->locale(app()->getLocale())->translatedFormat('d M Y') }} &middot; {{ __('booking') }} <span class="pill pill-{{ $d->booking->status }}">{{ __($d->booking->status) }}</span></p>
     <p>{{ __('Method:') }} {{ $d->payment_method ? strtoupper($d->payment_method) : '-' }}
         @if ($d->payment_proof) &middot; <a href="{{ route('pic.deposits.proof', $d) }}" target="_blank">{{ __('View receipt') }}</a>@endif
         @if ($d->verifier) &middot; {{ __('verified by') }} {{ $d->verifier->name }}@endif

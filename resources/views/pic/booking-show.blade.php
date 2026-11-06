@@ -9,7 +9,7 @@
     <h2>{{ __('Booking') }}</h2>
     <dl class="detail">
         <dt>{{ __('Event') }}</dt><dd>{{ $booking->event_name }} ({{ $booking->eventType->name() }})</dd>
-        <dt>{{ __('Date / time') }}</dt><dd>{{ $booking->event_date->format('l, d F Y') }}, {{ substr($booking->start_time,0,5) }} - {{ substr($booking->end_time,0,5) }}</dd>
+        <dt>{{ __('Date / time') }}</dt><dd>{{ $booking->event_date->locale(app()->getLocale())->translatedFormat('l, d F Y') }}, {{ substr($booking->start_time,0,5) }} - {{ substr($booking->end_time,0,5) }}</dd>
         <dt>{{ __('Facility') }}</dt><dd>{{ $booking->facility->name() }}</dd>
         <dt>{{ __('Guests') }}</dt><dd>{{ $booking->expected_guests }}</dd>
         <dt>{{ __('Equipment') }}</dt><dd>@forelse ($booking->equipment as $e){{ $e->name() }} &times; {{ $e->pivot->quantity }}@if(!$loop->last), @endif @empty {{ __('None') }} @endforelse</dd>
@@ -42,7 +42,7 @@
     <h2>{{ __('Status history') }}</h2>
     <ul>
         @foreach ($booking->statusLogs->sortBy('id') as $log)
-            <li>{{ $log->created_at->format('d M Y H:i') }} &mdash; {{ __(ucfirst($log->new_status)) }}
+            <li>{{ $log->created_at->locale(app()->getLocale())->translatedFormat('d M Y H:i') }} &mdash; {{ __(ucfirst($log->new_status)) }}
                 @if ($log->changedBy) {{ __('by') }} {{ $log->changedBy->name }}@endif
                 @if ($log->remarks)<span class="hint">({{ __($log->remarks) }})</span>@endif</li>
         @endforeach
